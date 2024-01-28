@@ -5,6 +5,7 @@ import { IoStatsChartSharp } from "react-icons/io5";
 import { RiInboxArchiveFill } from "react-icons/ri";
 import { IoPerson } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link as RouterLink } from "react-router-dom";
 import {
   IoIosHelpCircle,
   IoMdSettings,
@@ -12,16 +13,28 @@ import {
 import { CgLogOut } from "react-icons/cg";
 import {
   Box,
-  Text,
   IconButton,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
+  Link,
+  AlertDialogContent,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Button,
+  useDisclosure,
 } 
 from "@chakra-ui/react";
+import React from "react";
 
 const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
   return (
     <div>
       <Box display={["block", "block", "block", "none"]}>
@@ -34,16 +47,19 @@ const Navbar = () => {
           />
           <MenuList color="color.700" fontSize="14px">
             <MenuItem gap={3}>
-              <MdDashboard /> <Text>Dashboard</Text>
+              <MdDashboard /> <Link as={RouterLink}
+            to="/dashboard" >Dashboard</Link>
             </MenuItem>
             <MenuItem gap={3}>
-              <FaWallet /> <Text>My Wallet</Text>
+              <FaWallet /> <Link>My Wallet</Link>
             </MenuItem>
             <MenuItem gap={3}>
-              <RiFileHistoryFill /> History
+              <RiFileHistoryFill /> <Link as={RouterLink}
+            to="/history">History</Link>
             </MenuItem>
             <MenuItem gap={3}>
-              <IoStatsChartSharp /> Stastics
+              <IoStatsChartSharp /> <Link as={RouterLink}
+            to="/Transfer">Transfer</Link>
             </MenuItem>
             <MenuItem gap={3}>
               <RiInboxArchiveFill /> Inbox
@@ -53,14 +69,39 @@ const Navbar = () => {
             </MenuItem>
             <MenuItem gap={3}>
               <IoIosHelpCircle />
-              <Text>Help & Support</Text>
+              <Link>Help & Support</Link>
             </MenuItem>
             <MenuItem gap={3}>
-              <IoMdSettings /> <Text>Setting</Text>
+              <IoMdSettings /> <Link>Setting</Link>
             </MenuItem>
             <MenuItem gap={3}>
               <CgLogOut />
-              <Text>Log Out</Text>
+              <Link onClick={onOpen}>Log Out</Link>
+              
+            <AlertDialog
+              motionPreset="slideInBottom"
+              leastDestructiveRef={cancelRef}
+              onClose={onClose}
+              isOpen={isOpen}
+              isCentered
+            >
+              <AlertDialogOverlay />
+
+              <AlertDialogContent>
+                <AlertDialogHeader>Discard Changes?</AlertDialogHeader>
+                <AlertDialogCloseButton />
+                <AlertDialogBody>
+                  Are you sure you want to log out?
+                </AlertDialogBody>
+                <AlertDialogFooter>
+                  <Button onClick={onClose}>No</Button>
+                  <Link   as={RouterLink}
+            to="/login" bg='red' padding='6px 13px' borderRadius='5px' ml={3}>
+                    Yes
+                  </Link>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
             </MenuItem>
           </MenuList>
         </Menu>

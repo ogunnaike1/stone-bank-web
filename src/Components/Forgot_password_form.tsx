@@ -1,14 +1,8 @@
 import { useState } from "react";
-import {
-  Container,
-  Flex,
-  Icon,
-  InputLeftAddon,
-  VStack,
-} from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
+import { Icon, InputLeftAddon } from "@chakra-ui/react";
 import { FaEnvelope, FaArrowLeft, FaPhone } from "react-icons/fa";
 import Footer from "./Footer";
-
 import {
   FormControl,
   Card,
@@ -16,13 +10,9 @@ import {
   Input,
   InputGroup,
   Button,
-  InputRightElement,
   Stack,
-  Heading,
-  Link,
   Box,
   Text,
-  Center,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
@@ -36,7 +26,7 @@ const Forgot_password_form = (props: any) => {
           <Card>
             <CardBody>
               <FormControl>
-                <Stack spacing={3}>
+                <Stack spacing={2}>
                   <Text
                     fontSize={["1.6rem", "1.9rem", "1.8rem"]}
                     fontWeight="800"
@@ -44,7 +34,7 @@ const Forgot_password_form = (props: any) => {
                     textAlign="center"
                     color="color.300"
                   >
-                    Forgot Password
+                    Forgot Password?
                   </Text>
                   <Text textAlign="center" color="color.400">
                     Please select option to send link reset password
@@ -171,6 +161,8 @@ const Forgot_password_form = (props: any) => {
                     alignItems="center"
                   >
                     <Button
+                      as={RouterLink}
+                      to="/auth/login"
                       gap="10px"
                       bg="transparent"
                       _hover={{ bg: "#E2E8F0" }}
@@ -192,7 +184,7 @@ const Forgot_password_form = (props: any) => {
           </Card>
         </div>
       </div>
-      <Footer />
+ 
     </div>
   );
 };

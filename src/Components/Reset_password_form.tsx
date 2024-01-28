@@ -5,15 +5,9 @@ import {
   Card,
   CardBody,
   Input,
-  InputGroup,
   Button,
-  InputRightElement,
   Stack,
-  Heading,
-  Link,
-  Box,
   Text,
-  Center,
 } from "@chakra-ui/react";
 
 const Reset_password_form = () => {

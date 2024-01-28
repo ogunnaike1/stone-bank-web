@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Footer from "./Footer";
+import { Link as RouterLink } from "react-router-dom";
 import {
   FormControl,
   Card,
@@ -40,12 +41,14 @@ const Login_form = (props: any) => {
                   >
                     Login
                   </Text>
-                  <Input type="email" placeholder="Enter email" />
+                  <Input value={props.email} onChange={props.onSetEmail} type="email" placeholder="Enter email" />
                   <InputGroup size="md">
                     <Input
                       pr="4.5rem"
                       type={show ? "text" : "password"}
                       placeholder="Enter password"
+                      value={props.password}
+                      onChange={props.onSetPassword} 
                     />
                     <InputRightElement width="4.5rem">
                       <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -57,6 +60,8 @@ const Login_form = (props: any) => {
                     Login
                   </Button>
                   <Link
+                    as={RouterLink}
+                    to="/auth/forgot-password"
                     onClick={props.forgotPassword}
                     fontSize="14px"
                     fontWeight=""
@@ -74,6 +79,8 @@ const Login_form = (props: any) => {
                   >
                     <Text>Don't have an account?</Text>
                     <Link
+                      as={RouterLink}
+                      to="/auth/sign-up"
                       onClick={props.onClick}
                       color="blue"
                       fontWeight=""
@@ -88,7 +95,7 @@ const Login_form = (props: any) => {
           </Card>
         </div>
       </div>
-      <Footer />
+
     </div>
   );
 };
@@ -96,6 +103,10 @@ const Login_form = (props: any) => {
 Login_form.propTypes = {
   onClick: PropTypes.func,
   forgotPassword: PropTypes.func,
+  email: PropTypes.string,
+  password: PropTypes.string,
+  onSetEmail: PropTypes.func,
+  onSetPassword: PropTypes.func,
 };
 
 export default Login_form;

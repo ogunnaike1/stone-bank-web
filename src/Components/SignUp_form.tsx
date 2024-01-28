@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Footer from "./Footer";
+import { Link as RouterLink } from "react-router-dom";
 import {
   FormControl,
   Card,
@@ -35,17 +36,13 @@ const SignUp_form = (props: any) => {
                   >
                     Sign up
                   </Text>
-                  <Input type="email" placeholder="Enter email" />
-                  <Input type="email" placeholder="Enter username" />
+                  <Input value={props.email} type="email" placeholder="Enter email" onChange={props.onSetEmail} />
+                  <Input value={props.name} type="name" placeholder="Enter username" />
                   <Input
                     pr="4.5rem"
                     type={show ? "text" : "password"}
                     placeholder="Enter password"
-                  />
-                  <Input
-                    pr="4.5rem"
-                    type={show ? "text" : "password"}
-                    placeholder="Confirm password"
+                    value={props.password}
                   />
                   <Button bg="color.100" color="white">
                     Sign up
@@ -59,6 +56,8 @@ const SignUp_form = (props: any) => {
                   >
                     <Text>Already have an account?</Text>
                     <Link
+                    as={RouterLink}
+                    to = '/auth/login'
                       onClick={props.onClick}
                       color="blue"
                       fontWeight=""
@@ -73,13 +72,16 @@ const SignUp_form = (props: any) => {
           </Card>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
 
 SignUp_form.propTypes = {
   onClick: PropTypes.func,
+  email: PropTypes.string,
+  name: PropTypes.string,
+  password: PropTypes.string,
+  onSetEmail: PropTypes.func,
 };
 
 export default SignUp_form;

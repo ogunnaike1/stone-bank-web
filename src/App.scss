@@ -3,7 +3,6 @@
   margin: 0 auto;
 }.div-form-container {
   background-color: var(--white-color);
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -11,13 +10,13 @@
 
 
   .div-main {
-
     display: flex;
     flex-direction: column;
   }
 
   .div-form {
     width: 600px;
+    margin: 20vh 0;
   }
 
 }

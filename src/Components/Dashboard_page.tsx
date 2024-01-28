@@ -10,8 +10,7 @@ import {
   Grid,
   GridItem,
   Select,
-} 
-from "@chakra-ui/react";
+} from "@chakra-ui/react";
 import Navbar from "./Navbar";
 
 const Dashboard_page = () => {
@@ -32,7 +31,7 @@ const Dashboard_page = () => {
   };
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Grid
         templateColumns={[
           "repeat(7, 1fr)",
@@ -41,7 +40,7 @@ const Dashboard_page = () => {
           "repeat(12, 1fr)",
         ]}
       >
-        <Sidebar/>
+        <Sidebar />
         <GridItem
           gridColumn="span 7"
           overflowY="scroll"
@@ -72,7 +71,7 @@ const Dashboard_page = () => {
                 Manage Your Bank Account
               </Box>
             </Box>
-            <Search/>
+            <Search />
           </Box>
 
           <Box
